@@ -4,7 +4,6 @@ import api.usermanagement.dto.RoleDto;
 import api.usermanagement.dto.RoleUpdateForm;
 import api.usermanagement.dto.UserDto;
 import api.usermanagement.entity.RoleEntity;
-import api.usermanagement.entity.UserEntity;
 import api.usermanagement.exception.BusinessException;
 import api.usermanagement.repository.RoleRepository;
 import api.usermanagement.service.impl.RoleService;
@@ -54,6 +53,7 @@ public class RoleServiceImpl implements RoleService {
     private RoleDto convertToDto(RoleEntity roleEntity) {
         RoleDto dto = new RoleDto();
         dto.setId(roleEntity.getId());
+        dto.setName(roleEntity.getName());
         dto.setDescription(roleEntity.getDescription());
         return dto;
     }
