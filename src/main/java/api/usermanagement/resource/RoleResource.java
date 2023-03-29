@@ -5,7 +5,7 @@ import api.usermanagement.dto.RoleUpdateForm;
 import api.usermanagement.dto.UserDto;
 import api.usermanagement.entity.RoleEntity;
 import api.usermanagement.repository.RoleRepository;
-import api.usermanagement.service.impl.RoleService;
+import api.usermanagement.service.RoleService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 

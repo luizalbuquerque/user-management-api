@@ -72,5 +72,4 @@ public class UserEntity {
                 ", password='" + password + '\'' +
                 '}';
     }
-
 }

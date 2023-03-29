@@ -1,15 +1,17 @@
-package api.usermanagement.service.impl.impl;
+package api.usermanagement.service.impl;
 
 import api.usermanagement.dto.UserDto;
 import api.usermanagement.dto.UserUpdateForm;
 import api.usermanagement.entity.UserEntity;
 import api.usermanagement.exception.BusinessException;
 import api.usermanagement.repository.UserRepository;
-import api.usermanagement.service.impl.UserService;
+import api.usermanagement.service.UserService;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
 import java.util.Optional;
+
 import static api.usermanagement.util.ConstantUtils.DUPLICATE_USER;
 
 @Service
@@ -70,8 +72,6 @@ public class UserServiceImpl implements UserService {
         return dto;
     }
 
-
-
     public void deleteById(Long id) {
         try {
             if (userRepository.existsById(id)) {
@@ -81,12 +81,4 @@ public class UserServiceImpl implements UserService {
             throw new BusinessException(DUPLICATE_USER);
         }
     }
-
 }
-
-
-
-
-
-
-

@@ -1,4 +1,4 @@
-package api.usermanagement.service.impl;
+package api.usermanagement.service;
 
 import api.usermanagement.dto.RoleDto;
 import api.usermanagement.dto.RoleUpdateForm;
@@ -20,5 +20,4 @@ public interface RoleService {
     UserDto updateById(RoleUpdateForm form, Long roleId);
 
     void deleteById(Long id);
-
 }

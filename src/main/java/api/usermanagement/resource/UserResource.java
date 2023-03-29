@@ -4,7 +4,7 @@ import api.usermanagement.dto.UserDto;
 import api.usermanagement.dto.UserUpdateForm;
 import api.usermanagement.entity.UserEntity;
 import api.usermanagement.repository.UserRepository;
-import api.usermanagement.service.impl.UserService;
+import api.usermanagement.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -39,7 +39,7 @@ public class UserResource {
 
 
     @GetMapping("/{id}")
-   // @Secured({"ROLE_USER", "ROLE_ADMIN"})
+    // @Secured({"ROLE_USER", "ROLE_ADMIN"})
     public Optional<UserEntity> findById(@PathVariable Long id) {
         return userService.findUserById(id);
     }
@@ -54,6 +54,4 @@ public class UserResource {
     public void deleteById(@PathVariable("id") Long id) {
         userService.deleteById(id);
     }
-
-
 }

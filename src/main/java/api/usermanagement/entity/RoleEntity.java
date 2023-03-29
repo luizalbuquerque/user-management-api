@@ -14,10 +14,9 @@ public class RoleEntity {
 
     @Column(name = "name", nullable = false)
     private String name;
-    
+
     @Column(name = "description", nullable = false)
     private String description;
-
 
     public RoleEntity(Long id, String description) {
         this.id = id;
@@ -36,7 +35,8 @@ public class RoleEntity {
         this.id = id;
     }
 
-    public String getName() {return name;
+    public String getName() {
+        return name;
     }
 
     public void setName() {

@@ -8,5 +8,4 @@ public class UserUpdateForm {
     private String email;
 
     private String password;
-
 }

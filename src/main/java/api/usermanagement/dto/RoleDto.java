@@ -7,9 +7,6 @@ public class RoleDto {
     private String name;
     private String description;
 
-
-
-
     public RoleDto(Long id, String description) {
         this.id = id;
         this.name = name;
@@ -45,7 +42,4 @@ public class RoleDto {
     public void setDescription(String description) {
         this.description = description;
     }
-
-
 }
-

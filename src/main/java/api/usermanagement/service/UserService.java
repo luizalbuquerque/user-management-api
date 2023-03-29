@@ -1,4 +1,4 @@
-package api.usermanagement.service.impl;
+package api.usermanagement.service;
 
 import api.usermanagement.dto.UserDto;
 import api.usermanagement.dto.UserUpdateForm;

@@ -1,4 +1,4 @@
-package api.usermanagement.service.impl.impl;
+package api.usermanagement.service.impl;
 
 import api.usermanagement.dto.RoleDto;
 import api.usermanagement.dto.RoleUpdateForm;
@@ -6,7 +6,7 @@ import api.usermanagement.dto.UserDto;
 import api.usermanagement.entity.RoleEntity;
 import api.usermanagement.exception.BusinessException;
 import api.usermanagement.repository.RoleRepository;
-import api.usermanagement.service.impl.RoleService;
+import api.usermanagement.service.RoleService;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 import static api.usermanagement.util.ConstantUtils.DUPLICATE_USER;
+
 @Service
 public class RoleServiceImpl implements RoleService {
 
@@ -58,7 +59,6 @@ public class RoleServiceImpl implements RoleService {
         return dto;
     }
 
-
     public void deleteById(Long id) {
         try {
             if (roleRepository.existsById(id)) {
@@ -69,8 +69,3 @@ public class RoleServiceImpl implements RoleService {
         }
     }
 }
-
-
-
-
-
