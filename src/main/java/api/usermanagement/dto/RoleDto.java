@@ -3,17 +3,15 @@ package api.usermanagement.dto;
 import api.usermanagement.entity.RoleEntity;
 
 public class RoleDto {
+
     private Long id;
     private String name;
     private String description;
 
-    public RoleDto(Long id, String description) {
+    public RoleDto(Long id, String nome, String description) {
         this.id = id;
-        this.name = name;
+        this.name = nome;
         this.description = description;
-    }
-
-    public RoleDto(RoleEntity roleEntity) {
     }
 
     public RoleDto() {
@@ -31,8 +29,8 @@ public class RoleDto {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNome(String nome) {
+        this.name = nome;
     }
 
     public String getDescription() {

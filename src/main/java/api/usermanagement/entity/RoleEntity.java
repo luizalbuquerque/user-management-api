@@ -1,6 +1,10 @@
 package api.usermanagement.entity;
 
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.util.Objects;
 
@@ -18,20 +22,20 @@ public class RoleEntity {
     @Column(name = "description", nullable = false)
     private String description;
 
-    public RoleEntity(Long id, String description) {
+    public RoleEntity() {
+    }
+
+    public RoleEntity(Long id, String name, String description) {
         this.id = id;
         this.name = name;
         this.description = description;
-    }
-
-    public RoleEntity() {
     }
 
     public Long getId() {
         return id;
     }
 
-    public void setRoleId(Long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -39,7 +43,7 @@ public class RoleEntity {
         return name;
     }
 
-    public void setName() {
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -49,27 +53,5 @@ public class RoleEntity {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        RoleEntity that = (RoleEntity) o;
-        return Objects.equals(id, that.id) && Objects.equals(name, that.name);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, description, name);
-    }
-
-    @Override
-    public String toString() {
-        return "RoleEntity{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                '}';
     }
 }

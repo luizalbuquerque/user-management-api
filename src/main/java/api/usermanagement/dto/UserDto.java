@@ -3,8 +3,6 @@ package api.usermanagement.dto;
 
 import api.usermanagement.entity.UserEntity;
 
-import java.util.Date;
-
 public class UserDto {
 
     private Long id;

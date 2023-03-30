@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+import static api.usermanagement.util.ConstantUtils.DUPLICATE_ROLE;
 import static api.usermanagement.util.ConstantUtils.DUPLICATE_USER;
 
 @Service
@@ -25,13 +26,10 @@ public class RoleServiceImpl implements RoleService {
     }
 
     public void save(RoleDto roleDto) {
-        try {
             RoleEntity roleEntity = new RoleEntity();
-            roleEntity.setDescription(roleDto.getDescription().trim());
+            roleEntity.setName(roleDto.getName());
+            roleEntity.setDescription(roleDto.getDescription());
             roleRepository.save(roleEntity);
-        } catch (DataIntegrityViolationException e) {
-            throw new BusinessException(DUPLICATE_USER);
-        }
     }
 
     @Override
@@ -54,7 +52,6 @@ public class RoleServiceImpl implements RoleService {
     private RoleDto convertToDto(RoleEntity roleEntity) {
         RoleDto dto = new RoleDto();
         dto.setId(roleEntity.getId());
-        dto.setName(roleEntity.getName());
         dto.setDescription(roleEntity.getDescription());
         return dto;
     }
