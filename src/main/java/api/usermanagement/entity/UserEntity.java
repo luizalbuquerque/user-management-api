@@ -17,6 +17,9 @@ public class UserEntity {
     @Column(name = "password", nullable = false)
     private String password;
 
+//    @ManyToMany
+//    private RoleEntity roleEntity;
+
     public UserEntity(Long id, String email, String password) {
         this.id = id;
         this.email = email;
