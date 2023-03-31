@@ -23,9 +23,9 @@ public class UserEntity {
     @ManyToMany
     @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
-    private Collection<RoleEntity> roleEntity;
+    private List<RoleEntity> roleEntity;
 
-    public UserEntity(Long id, String email, String password, Collection<RoleEntity> roleEntity) {
+    public UserEntity(Long id, String email, String password, List<RoleEntity> roleEntity) {
         this.id = id;
         this.email = email;
         this.password = password;
@@ -59,11 +59,11 @@ public class UserEntity {
         this.password = password;
     }
 
-    public Collection<RoleEntity> getRoleEntity() {
+    public List<RoleEntity> getRoleEntity() {
         return roleEntity;
     }
 
-    public void setRoleEntity(Collection<RoleEntity> roleEntity) {
+    public void setRoleEntity(List<RoleEntity> roleEntity) {
         this.roleEntity = roleEntity;
     }
 

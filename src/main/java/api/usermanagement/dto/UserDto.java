@@ -1,18 +1,24 @@
 package api.usermanagement.dto;
 
 
+import api.usermanagement.entity.RoleEntity;
 import api.usermanagement.entity.UserEntity;
+
+import java.util.Collection;
+import java.util.List;
 
 public class UserDto {
 
     private Long id;
     private String email;
     private String password;
+    private List<RoleEntity> roleEntity;
 
-    public UserDto(Long id, String email, String password) {
+    public UserDto(Long id, String email, String password, List<RoleEntity> roleEntity) {
         this.id = id;
         this.email = email;
         this.password = password;
+        this.roleEntity = roleEntity;
     }
 
     public UserDto(UserEntity userEntity) {
@@ -43,5 +49,13 @@ public class UserDto {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<RoleEntity> getRoleEntity() {
+        return roleEntity;
+    }
+
+    public void setRoleEntity(List<RoleEntity> roleEntity) {
+        this.roleEntity = roleEntity;
     }
 }

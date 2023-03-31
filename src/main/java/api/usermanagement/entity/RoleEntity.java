@@ -1,13 +1,9 @@
 package api.usermanagement.entity;
 
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
-import java.util.Objects;
 
 @Entity
 @Table(name = "role")
@@ -44,8 +40,8 @@ public class RoleEntity {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String setName(String name) {
+        return this.name = name;
     }
 
     public String getDescription() {
