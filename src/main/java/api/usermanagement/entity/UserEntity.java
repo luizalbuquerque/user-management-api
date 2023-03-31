@@ -1,6 +1,9 @@
 package api.usermanagement.entity;
 
+import javax.management.relation.Role;
 import javax.persistence.*;
+import java.util.Collection;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -17,13 +20,16 @@ public class UserEntity {
     @Column(name = "password", nullable = false)
     private String password;
 
-//    @ManyToMany
-//    private RoleEntity roleEntity;
+    @ManyToMany
+    @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
+    private Collection<RoleEntity> roleEntity;
 
-    public UserEntity(Long id, String email, String password) {
+    public UserEntity(Long id, String email, String password, Collection<RoleEntity> roleEntity) {
         this.id = id;
         this.email = email;
         this.password = password;
+        this.roleEntity = roleEntity;
     }
 
     public UserEntity() {
@@ -51,6 +57,14 @@ public class UserEntity {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Collection<RoleEntity> getRoleEntity() {
+        return roleEntity;
+    }
+
+    public void setRoleEntity(Collection<RoleEntity> roleEntity) {
+        this.roleEntity = roleEntity;
     }
 
     @Override
