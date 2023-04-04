@@ -2,6 +2,7 @@ package api.usermanagement.entity;
 
 import javax.management.relation.Role;
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
@@ -20,19 +21,18 @@ public class UserEntity {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @ManyToMany
-    @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
-    private List<RoleEntity> roleEntity;
+    @OneToMany
+    private List<RoleEntity> roleList = new ArrayList<>();
 
-    public UserEntity(Long id, String email, String password, List<RoleEntity> roleEntity) {
+    public UserEntity(Long id, String email, String password, List<RoleEntity> roleList) {
         this.id = id;
         this.email = email;
         this.password = password;
-        this.roleEntity = roleEntity;
+        this.roleList = roleList;
     }
 
     public UserEntity() {
+
     }
 
     public Long getId() {
@@ -59,33 +59,11 @@ public class UserEntity {
         this.password = password;
     }
 
-    public List<RoleEntity> getRoleEntity() {
-        return roleEntity;
+    public List<RoleEntity> getRoleList() {
+        return roleList;
     }
 
-    public void setRoleEntity(List<RoleEntity> roleEntity) {
-        this.roleEntity = roleEntity;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        UserEntity that = (UserEntity) o;
-        return Objects.equals(id, that.id) && Objects.equals(email, that.email) && Objects.equals(password, that.password);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, email, password);
-    }
-
-    @Override
-    public String toString() {
-        return "UserEntity{" +
-                "id=" + id +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+    public void setRoleList(List<RoleEntity> roleList) {
+        this.roleList = roleList;
     }
 }

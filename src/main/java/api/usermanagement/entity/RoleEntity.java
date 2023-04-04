@@ -22,7 +22,7 @@ public class RoleEntity {
     public RoleEntity() {
     }
 
-    public RoleEntity(Long id, String name, String description) {
+    public RoleEntity(Long id, String name, String description, UserEntity userEntity) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -40,8 +40,8 @@ public class RoleEntity {
         return name;
     }
 
-    public String setName(String name) {
-        return this.name = name;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {
@@ -51,4 +51,5 @@ public class RoleEntity {
     public void setDescription(String description) {
         this.description = description;
     }
+
 }

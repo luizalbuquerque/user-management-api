@@ -30,11 +30,35 @@ public class UserServiceImpl implements UserService {
     }
 
 
+//    public void createUser(UserDto userDto) {
+//        try {
+//            UserEntity userEntity = new UserEntity();
+//            userEntity.setEmail(userDto.getEmail().trim());
+//            userEntity.setPassword(userDto.getPassword().trim());
+//
+//            //TODO verificar porque id está null
+//
+//            RoleEntity roleEntity = new RoleEntity();
+//            roleEntity.setName(userDto.getRoleEntity().get(0).getName());
+//            roleEntity.setDescription(userDto.getRoleEntity().get(0).getDescription());
+//            roleRepository.save(roleEntity);
+//            //TODO alterar list para Collection
+//            List<RoleEntity> roles = Collections.singletonList(roleEntity);
+//            userEntity.setRoleEntity(roles);
+//
+//            userEntity.setRoleEntity(userDto.getRoleEntity());
+//            userRepository.save(userEntity);
+//        } catch (DataIntegrityViolationException e) {
+//            throw new BusinessException(DUPLICATE_USER);
+//        }
+//    }
+
     public void createUser(UserDto userDto) {
-        try {
+
+        try{
             UserEntity userEntity = new UserEntity();
-            userEntity.setEmail(userDto.getEmail().trim());
-            userEntity.setPassword(userDto.getPassword().trim());
+            userEntity.setEmail(userDto.getEmail());
+            userEntity.setPassword(userDto.getPassword());
 
             RoleEntity roleEntity = new RoleEntity();
             roleEntity.setName(userDto.getRoleEntity().get(0).getName());
@@ -42,10 +66,10 @@ public class UserServiceImpl implements UserService {
             roleRepository.save(roleEntity);
 
             List<RoleEntity> roles = Collections.singletonList(roleEntity);
-            userEntity.setRoleEntity(roles);
+            userEntity.setRoleList(roles);
 
-            userEntity.setRoleEntity(userDto.getRoleEntity());
             userRepository.save(userEntity);
+
         } catch (DataIntegrityViolationException e) {
             throw new BusinessException(DUPLICATE_USER);
         }
