@@ -17,4 +17,6 @@ public interface UserService {
     UserDto updateByUserId(UserUpdateForm form, Long id);
 
     void deleteById(Long id);
+
+    UserDto updateUserRoleByEmail(UserDto userDto);
 }

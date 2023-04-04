@@ -12,6 +12,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -29,29 +30,6 @@ public class UserServiceImpl implements UserService {
         this.roleRepository = roleRepository;
     }
 
-
-//    public void createUser(UserDto userDto) {
-//        try {
-//            UserEntity userEntity = new UserEntity();
-//            userEntity.setEmail(userDto.getEmail().trim());
-//            userEntity.setPassword(userDto.getPassword().trim());
-//
-//            //TODO verificar porque id está null
-//
-//            RoleEntity roleEntity = new RoleEntity();
-//            roleEntity.setName(userDto.getRoleEntity().get(0).getName());
-//            roleEntity.setDescription(userDto.getRoleEntity().get(0).getDescription());
-//            roleRepository.save(roleEntity);
-//            //TODO alterar list para Collection
-//            List<RoleEntity> roles = Collections.singletonList(roleEntity);
-//            userEntity.setRoleEntity(roles);
-//
-//            userEntity.setRoleEntity(userDto.getRoleEntity());
-//            userRepository.save(userEntity);
-//        } catch (DataIntegrityViolationException e) {
-//            throw new BusinessException(DUPLICATE_USER);
-//        }
-//    }
 
     public void createUser(UserDto userDto) {
 
@@ -120,5 +98,25 @@ public class UserServiceImpl implements UserService {
         } catch (DataIntegrityViolationException e) {
             throw new BusinessException(DUPLICATE_USER);
         }
+    }
+
+    @Override
+    public UserDto updateUserRoleByEmail(UserDto userDto) {
+
+        UserEntity userEntity  = userRepository.findByEmail(userDto.getEmail());
+
+        RoleEntity roleEntity = new RoleEntity();
+        roleEntity.setName(userDto.getRoleEntity().get(0).getName());
+        roleEntity.setDescription(userDto.getRoleEntity().get(0).getDescription());
+        roleRepository.save(roleEntity);
+
+        List<RoleEntity> roleList = new ArrayList<>();
+        roleList.add(roleEntity);
+        userEntity.setRoleList(roleList);
+
+        userRepository.save(userEntity);
+
+
+        return null;
     }
 }

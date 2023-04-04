@@ -50,6 +50,11 @@ public class UserResource {
         return userService.updateByUserId(form, id);
     }
 
+    @PutMapping
+    public UserDto updateUserRoleByEmail(@RequestBody UserDto userDto) {
+        return userService.updateUserRoleByEmail(userDto);
+    }
+
     @DeleteMapping("/{id}")
     public void deleteById(@PathVariable("id") Long id) {
         userService.deleteById(id);

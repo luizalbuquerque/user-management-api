@@ -13,7 +13,6 @@ public class UserDto {
     private String email;
     private String password;
     private List<RoleEntity> roleEntity;
-    private List<RoleDto> roleDto;
 
     public UserDto(Long id, String email, String password, List<RoleEntity> roleEntity) {
         this.id = id;
@@ -60,11 +59,4 @@ public class UserDto {
         this.roleEntity = roleEntity;
     }
 
-    public List<RoleDto> getRoleDto() {
-        return roleDto;
-    }
-
-    public void setRoleDto(List<RoleDto> roleDto) {
-        this.roleDto = roleDto;
-    }
 }
