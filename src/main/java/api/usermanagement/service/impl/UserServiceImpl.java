@@ -12,7 +12,6 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -110,9 +109,10 @@ public class UserServiceImpl implements UserService {
         roleEntity.setDescription(userDto.getRoleEntity().get(0).getDescription());
         roleRepository.save(roleEntity);
 
-        List<RoleEntity> roleList = new ArrayList<>();
-        roleList.add(roleEntity);
-        userEntity.setRoleList(roleList);
+        List<RoleEntity> roles = userEntity.getRoleList();
+
+        roles.add(roleEntity);
+        userEntity.setRoleList(roles);
 
         userRepository.save(userEntity);
 
