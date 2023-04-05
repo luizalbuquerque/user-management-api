@@ -40,11 +40,11 @@ public class GroupEntity {
         this.groupName = groupName;
     }
 
-    public String getDescription() {
+    public String getGroupDescription() {
         return groupName;
     }
 
-    public void setDescription(String description) {
+    public void setGroupDescription(String description) {
         this.groupDescription = groupDescription;
     }
 }

@@ -6,6 +6,7 @@ import api.usermanagement.exception.BusinessException;
 import api.usermanagement.repository.GroupRepository;
 import api.usermanagement.service.GroupService;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -21,10 +22,10 @@ public class GroupServiceImpl implements GroupService  {
         this.groupRepository = groupRepository;
     }
 
-    public void save(GroupDto groupDto) {
+    public void save(GroupDto groupDto ) {
         GroupEntity groupEntity = new GroupEntity();
-        groupEntity.setGroupName(groupDto.setGroupName());
-        groupEntity.setGroupDescription(groupDto.setGroupDescription());
+        groupEntity.setName(groupDto.getName());
+        groupEntity.setGroupDescription(groupDto.getDescription());
         groupRepository.save(groupEntity);
     }
 
@@ -34,7 +35,7 @@ public class GroupServiceImpl implements GroupService  {
     }
 
     @Override
-    public GroupEntity<GroupEntity> updateGroup(long id) {
+    public ResponseEntity<GroupEntity> updateGroup(long id) {
         return null;
     }
 
@@ -54,7 +55,7 @@ public class GroupServiceImpl implements GroupService  {
 
     public void deleteById(Long id) {
         try {
-            if (GroupRepository.existsById(id)) {
+            if (groupRepository.existsById(id)) {
                 groupRepository.deleteById(id);
             }
         } catch (DataIntegrityViolationException e) {

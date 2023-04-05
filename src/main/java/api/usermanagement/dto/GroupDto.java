@@ -38,7 +38,7 @@ public class GroupDto {
         return groupDescription;
     }
 
-    public void setDescription(String groupDescription) {
+    public void setGroupDescription(String groupDescription) {
         this.groupDescription = groupDescription;
     }
 }
