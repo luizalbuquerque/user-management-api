@@ -45,7 +45,7 @@ public class GroupResource {
 
 
     @PutMapping("/{groupId}")
-    public UserDto updateById(@RequestBody GroupUpdateForm form, @PathVariable("id") Long id) {
+    public GroupDto updateById(@RequestBody GroupUpdateForm form, @PathVariable("id") Long id) {
         return groupService.updateById(form, id);
     }
 

@@ -6,6 +6,4 @@ import lombok.Data;
 public class GroupUpdateForm {
 
     private String groupDescription;
-
-
 }
